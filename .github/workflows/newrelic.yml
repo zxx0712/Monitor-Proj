@@ -2,7 +2,7 @@ name: newrelic workflow
 
 on:
   schedule:
-    - cron: '25 9 * * *'  # 每天 0 点执行
+    - cron: '30 9 * * *'  # 每天 0 点执行
 
 jobs:
   execute-python-source-code:
@@ -15,12 +15,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.12'
+        python-version: '3.9'
 
     - name: Install dependencies
       run: |
         pip install --upgrade pip
         pip install -r requirements.txt # 安装依赖
+        pip install requests
 
     - name: Execute Python Source Code
-      run: python3 ./monitor.py
+      run: python monitor.py
