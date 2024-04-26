@@ -24,4 +24,4 @@ jobs:
         pip3 install requests
 
     - name: Execute Python Source Code
-      run: python3 ./monitor.py
+      run: python3 monitor.py
