@@ -1,6 +1,7 @@
 name: newrelic workflow
 
 on:
+  push:
   schedule:
     - cron: '35 9 * * *'  # 每天 0 点执行
 
