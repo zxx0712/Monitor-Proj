@@ -2,7 +2,7 @@ name: newrelic workflow
 
 on:
   schedule:
-    - cron: '13 9 * * *'  # 每天 0 点执行
+    - cron: '20 9 * * *'  # 每天 0 点执行
 
 jobs:
   execute-python-source-code:
@@ -23,4 +23,4 @@ jobs:
         pip install -r requirements.txt # 安装依赖
 
     - name: Execute Python Source Code
-      run: python monitor.py
+      run: python3 ./monitor.py
