@@ -1,0 +1,21 @@
+name: newrelic workflow
+
+on:
+  schedule:
+    - cron: '20 17 * * *'  # 每天 0 点执行
+
+jobs:
+  execute-python-source-code:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Execute Python Source Code
+      run: python monitor.py
