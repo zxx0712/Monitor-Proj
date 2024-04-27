@@ -1,6 +1,7 @@
 name: newrelic workflow
 
 on:
+  push:
   schedule:
     - cron: '0 6 * * *'  # 每天北京时间 9:30 执行
 
