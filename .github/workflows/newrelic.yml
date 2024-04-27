@@ -26,4 +26,5 @@ jobs:
     - name: Execute Python Source Code
       run: python3 monitor.py
       env: #设置secrets的环境变量
-        Api_Key: ${{ secrets.Api_Key }}
+        ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+        API_KEY: ${{ secrets.API_KEY }}
