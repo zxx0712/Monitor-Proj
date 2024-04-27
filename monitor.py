@@ -10,8 +10,8 @@ error_rate = 0.0
 error_rate_past = 0.0
 
 # New Relic account ID和API key
-NEW_RELIC_ACCOUNT_ID = 3619369
-NEW_RELIC_API_KEY = os.environ["Api_Key"]
+NEW_RELIC_ACCOUNT_ID = os.environ["ACCOUNT_ID"]
+NEW_RELIC_API_KEY = os.environ["API_KEY"]
 
 # NRQL查询
 nrql_query_crash = """
