@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 webhook_url = 'https://oapi.dingtalk.com/robot/send?access_token=0def5a95de30fb7b22ee3a4874a8fbeb562369a96ab674e44309521da7d4d7d1'
 
@@ -10,7 +11,7 @@ error_rate_past = 0.0
 
 # New Relic account ID和API key
 NEW_RELIC_ACCOUNT_ID = '3619369'
-NEW_RELIC_API_KEY = 'NRAK-0IVZ4RMIZDZ5G3SXE3QXCXUXGGF'
+NEW_RELIC_API_KEY = os.environ['Api_Key']
 
 # NRQL查询
 nrql_query_crash = """
