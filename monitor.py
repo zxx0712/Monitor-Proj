@@ -17,7 +17,7 @@ NEW_RELIC_API_KEY = os.environ["Api_Key"]
 nrql_query_crash = """
 query($accountId: String!){
   actor {
-    account(id: 3619369) {
+    account(id: $accountId) {
       nrql(query: "SELECT percentage(uniqueCount(sessionId), where category = 'Crash') as 'Crash rate' FROM MobileSession, MobileCrash WHERE (entityGuid = 'MzYxOTM2OXxNT0JJTEV8QVBQTElDQVRJT058MTEzNDM3NDM3NQ') LIMIT 5 SINCE 259200 seconds AGO TIMESERIES") {
         results
       }
@@ -29,7 +29,7 @@ query($accountId: String!){
 nrql_query_crash_past = """
 query($accountId: String!){
   actor {
-    account(id: 3619369) {
+    account(id: $accountId) {
       nrql(query: "SELECT percentage(uniqueCount(sessionId), where category = 'Crash') as 'Crash rate' FROM MobileSession, MobileCrash WHERE (entityGuid = 'MzYxOTM2OXxNT0JJTEV8QVBQTElDQVRJT058MTEzNDM3NDM3NQ') LIMIT 5 SINCE 345600 seconds AGO UNTIL 86400 seconds AGO TIMESERIES") {
         results
       }
@@ -41,7 +41,7 @@ query($accountId: String!){
 nrql_query_error = """
 query($accountId: String!){
   actor {
-    account(id: 3619369) {
+    account(id: $accountId) {
       nrql(query: "SELECT percentage(count(*), where errorType is not null) as 'Errors and Failures Rate %' FROM MobileRequestError, MobileRequest WHERE (entityGuid = 'MzYxOTM2OXxNT0JJTEV8QVBQTElDQVRJT058MTEzNDM3NDM3NQ') LIMIT 1000 SINCE 259200 seconds AGO TIMESERIES") {
         results
       }
@@ -53,7 +53,7 @@ query($accountId: String!){
 nrql_query_error_past = """
 query($accountId: String!){
   actor {
-    account(id: 3619369) {
+    account(id: $accountId) {
       nrql(query: "SELECT percentage(count(*), where errorType is not null) as 'Errors and Failures Rate %' FROM MobileRequestError, MobileRequest WHERE (entityGuid = 'MzYxOTM2OXxNT0JJTEV8QVBQTElDQVRJT058MTEzNDM3NDM3NQ') LIMIT 1000 SINCE 345600 seconds AGO UNTIL 86400 seconds AGO TIMESERIES") {
         results
       }
