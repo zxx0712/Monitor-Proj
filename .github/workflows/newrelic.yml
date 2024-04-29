@@ -2,7 +2,7 @@ name: newrelic workflow
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 每天北京时间 9:00 执行（不一定9:00就执行完成，会有误差）
+    - cron: '5 1 * * *'  # 每天北京时间 9:05 执行（不一定9:05就执行完成，会有误差）
 
 jobs:
   execute-python-source-code:
