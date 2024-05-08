@@ -155,7 +155,7 @@ def get_error_rate_past():
         data = {
             "msgtype": "text",
             "text": {
-                "content": f"{f"Daily Monitoring: Crash Rate & Errors Rate\n\nChange compared to the previous reporting period:\n📉Crash Rate: {round((crash_rate - crash_rate_past)/crash_rate_past, 4)}bp\n🚫Errors and Failures Rate: {round((error_rate - error_rate_past)/error_rate_past, 4)}bp\n\nOver the past 3 days:\n📉Crash Rate: {crash_rate}%\n🚫Errors and Failures Rate: {error_rate}%\n\nOnward and upward! 🚀"}\n"
+                "content": f"{f"Daily Monitoring: Crash Rate & Errors Rate\n\nChange compared to the previous reporting period:\n📉Crash Rate: {round((crash_rate - crash_rate_past)/crash_rate_past, 4) * 10000}bp\n🚫Errors and Failures Rate: {round((error_rate - error_rate_past)/error_rate_past, 4) * 10000}bp\n\nOver the past 3 days:\n📉Crash Rate: {crash_rate}%\n🚫Errors and Failures Rate: {error_rate}%\n\nOnward and upward! 🚀"}\n"
             },
             "at": True  # at为True时，消息中会@所有人
         }
