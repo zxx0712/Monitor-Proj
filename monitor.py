@@ -3,7 +3,7 @@ import json
 import os
 from datetime import datetime
 
-webhook_url = 'https://oapi.dingtalk.com/robot/send?access_token=0def5a95de30fb7b22ee3a4874a8fbeb562369a96ab674e44309521da7d4d7d1'
+webhook_url = 'https://oapi.dingtalk.com/robot/send?access_token=b2d2062fa29a09d751ee6bb5f29f0e3b3f01b74c9b8acbcb73b1542b3852daff'
 
 onduty_file_path = './onduty_data.json'
 now = datetime.now()
