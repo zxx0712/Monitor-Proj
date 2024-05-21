@@ -1,8 +1,12 @@
 import requests
 import json
 import os
+from datetime import datetime
 
 webhook_url = 'https://oapi.dingtalk.com/robot/send?access_token=b2d2062fa29a09d751ee6bb5f29f0e3b3f01b74c9b8acbcb73b1542b3852daff'
+
+onduty_file_path = './onduty_data.json'
+now = datetime.now()
 
 crash_rate = 0.0
 crash_rate_past = 0.0
@@ -152,14 +156,19 @@ def get_error_rate_past():
         average_error_rate = error_rates_sum / len(results)
         global error_rate_past
         error_rate_past = round(average_error_rate, 2)
+        with open(onduty_file_path, 'r', encoding='utf-8') as file:
+            # 使用 json.load() 解析 JSON 数据
+            onduty_data = json.load(file)
+        formatted_date = now.strftime("%m/%d")
         data = {
             "msgtype": "text",
             "text": {
                 "content": f"{f"Daily Monitoring: Crash Rate & Errors Rate\n\nChange compared to the previous reporting period:\n📉Crash Rate: {round((crash_rate - crash_rate_past)/crash_rate_past, 4) * 10000}bp\n🚫Errors and Failures Rate: {round((error_rate - error_rate_past)/error_rate_past, 4) * 10000}bp\n\nOver the past 3 days:\n📉Crash Rate: {crash_rate}%\n🚫Errors and Failures Rate: {error_rate}%\n\nOnward and upward! 🚀"}\n"
             },
-            "at": True  # at为True时，消息中会@所有人
+            "at": {
+                "atMobiles": [onduty_data[formatted_date]]
+            }
         }
-        print(data)
         webhook_headers = {'Content-Type': 'application/json'}
         response = requests.post(webhook_url, headers=webhook_headers, data=json.dumps(data))
         if response.status_code == 200:
